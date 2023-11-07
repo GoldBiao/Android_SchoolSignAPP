@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加学生</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div style="margin-top: 50px;>
+<!-- 示例-970 -->
+<ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+    <legend>学生信息</legend>
+</fieldset>
+
+<form class="layui-form" action="" lay-filter="example" >
+    <div class="layui-form-item" >
+        <label class="layui-form-label">修改头像</label>
+        <div class="layui-input-inline uploadHeadImage">
+            <div class="layui-upload-drag" id="headImg">
+                <i class="layui-icon"></i>
+                <p>点击上传图片</p>
+            </div>
+        </div>
+        <div class="layui-input-inline" style="height: 80px">
+            <div class="layui-upload-list">
+                <img class="layui-upload-img headImage" src="http://t.cn/RCzsdCq" style="height: 100px;width: 120px" id="demo1">
+                <p id="demoText"></p>
+            </div>
+        </div>
+    </div>
+
+     <div class="layui-form-item">
+        <label class="layui-form-label">学号<span id="id" style="visibility: hidden"></span></label>
+        <div class="layui-input-block">
+            <input type="text" id="account" name="account" lay-verify="account" autocomplete="off" placeholder="请输入学号" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-block">
+            <input type="text" id="name" name="name" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">班级</label>
+        <div class="layui-input-block">
+            <input type="text" name="banji"  id="banji" autocomplete="off" placeholder="请输入" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">电话</label>
+        <div class="layui-input-block">
+            <input type="text" name="phone" id="phone" autocomplete="off" placeholder="请输入" class="layui-input">
+        </div>
+    </div>
+
+
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+<!--            <button type="button" class="layui-btn layui-btn-normal" id="LAY-component-form-setval">赋值</button>-->
+            <button type="button" class="layui-btn layui-btn-normal" id="LAY-component-form-getval">提交</button>
+<!--            <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>-->
+        </div>
+    </div>
+</form>
+<script src="contance.js"></script>
+<script src="layui/layui.all.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['form', 'layedit', 'laydate',"upload",], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,upload = layui.upload
+            ,laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            account: function(value){
+                if(value.length < 5){
+                    return '账号至少得5个字符啊';
+                }
+            }
+            ,pass: [
+                /^[\S]{6,12}$/
+                ,'密码必须6到12位，且不能出现空格'
+            ]
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        var head_pic="";
+        var uploadInst = upload.render({
+            elem: '#headImg'
+            , url: baseimg+'upload'
+            , size: 500
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    layui.$('#demo1').attr('src', result); //图片链接（base64）
+                });
+
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                }
+                layer.msg('上传成功');
+                head_pic=baseimg+res.data;
+                //上传成功
+                //打印后台传回的地址: 把地址放入一个隐藏的input中, 和表单一起提交到后台, 此处略..
+                /*   console.log(res.data.src);*/
+                // window.parent.uploadHeadImage(res.data);
+                // var demoText = $('#demoText');
+                // demoText.html('<span style="color: #8f8f8f;">上传成功!!!</span>');
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+
+        //表单取值
+        layui.$('#LAY-component-form-getval').on('click', function(){
+            var data = form.val('example');
+
+            var text = layui.$("#id").text();
+            if (text!=0){
+                layui.jquery.ajax({
+                    url:baseurl+"/upStudent",
+                    data:{'name':data.name,"account":data.account,"id":text,"pic":head_pic,"banji":data.banji,"phone":data.phone},
+                    type:"Post",
+                    success:function(result){
+                        console.log(result);
+                        layer.msg(result.msg);
+                        // location.reload(); //删除成功后再刷新
+                    },
+                    error:function(result){
+                        // $.messager.alert('错误',result.msg);
+                    }
+                });
+            }else {
+                layui.jquery.ajax({
+                    url:baseurl+"/addStudent",
+                    data:{'name':data.name,"account":data.account,"id":text,"pic":head_pic,"banji":data.banji,"phone":data.phone},
+                    type:"Post",
+                    success:function(result){
+
+                        console.log(result);
+                        layer.msg(result.msg);
+                        // location.reload(); //删除成功后再刷新
+                    },
+                    error:function(result){
+                       // $.messager.alert('错误',result.msg);
+                    }
+                });
+            }
+
+        });
+
+    });
+</script>
+
+</body>
+</html>
