@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:background="@drawable/bg"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <ImageView
+            android:id="@+id/iv"
+
+            android:src="@drawable/logo"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+        <TextView
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="@dimen/phoenix_dimen_5"
+        android:padding="@dimen/phoenix_dimen_16"
+        android:text="个人信息"
+        android:id="@+id/tv_up_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <View
+        android:background="@color/color_gray_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:layout_marginTop="@dimen/phoenix_dimen_5"
+        android:padding="@dimen/phoenix_dimen_16"
+        android:text="设置"
+        android:id="@+id/tv_set"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <View
+        android:background="@color/color_gray_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <TextView
+        android:layout_marginTop="@dimen/phoenix_dimen_5"
+        android:padding="@dimen/phoenix_dimen_16"
+        android:text="退出登录"
+        android:id="@+id/tv_exit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <View
+        android:background="@color/color_gray_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+</LinearLayout>

@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">school_sign_app</string>
+    <string name="app_name">上课考勤管理</string>
+    <string name="cancel_label">cancel</string>
+    <string name="ok_label">ok_label</string>
+    <string name="settings_photo_quality_title">photo</string>
+    <string name="settings_video_quality_title">settings_video_quality_title</string>
 </resources>

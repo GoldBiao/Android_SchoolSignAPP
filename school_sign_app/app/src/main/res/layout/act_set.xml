@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/head_layout"/>
+    <TextView
+        android:layout_marginTop="@dimen/phoenix_dimen_5"
+        android:padding="@dimen/phoenix_dimen_16"
+        android:text="关于"
+        android:id="@+id/tv_set"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <View
+        android:background="@color/color_gray_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/ll_ban"
+        android:layout_marginTop="@dimen/phoenix_dimen_5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+
+            android:padding="@dimen/phoenix_dimen_16"
+            android:text="版本"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+        <TextView
+
+            android:padding="@dimen/phoenix_dimen_16"
+            android:text="1.0"
+            android:id="@+id/tv_banben"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="@color/color_gray_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/ll_huancun"
+        android:layout_marginTop="@dimen/phoenix_dimen_5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+
+            android:padding="@dimen/phoenix_dimen_16"
+            android:text="清空缓存"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+        <TextView
+
+            android:padding="@dimen/phoenix_dimen_16"
+            android:text="1.0m"
+            android:id="@+id/tv_hc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="@color/color_gray_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</LinearLayout>
