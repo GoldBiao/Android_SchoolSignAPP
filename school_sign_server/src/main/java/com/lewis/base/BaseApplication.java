@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
 @SpringBootApplication
-
+//测试git推送
 @MapperScan("com.lewis.base.mapper")//与dao层的@Mapper二选一写上即可(主要作用是扫包)
 public class BaseApplication extends SpringBootServletInitializer {
 
