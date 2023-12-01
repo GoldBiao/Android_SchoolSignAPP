@@ -3,7 +3,7 @@ package lewis.com.sign.ui.act;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.widget.LinearLayoutManager;
-import androidx.appcompat.widget.RecyclerView;
+//import androidx.appcompat.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
